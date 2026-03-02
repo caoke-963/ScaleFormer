@@ -28,7 +28,15 @@ huggingface-cli download kecao/PanScale --repo-type dataset --local-dir ./datase
 
 ## Configuration
 
-Edit one of the YAML files before running (for example `option_jilin.yml`):
+Edit one of the YAML files before running (for example `options/option_jilin.yml`).
+All option files are now organized under the `options/` folder:
+
+- `options/option_jilin.yml`
+- `options/option_landsat.yml`
+- `options/option_skysat.yml`
+- `options/option_full_jilin.yml`
+- `options/option_full_landsat.yml`
+- `options/option_full_skysat.yml`
 
 - `algorithm`: model name (must match a python file under `model/`)
 - `checkpoint`: root directory for checkpoints
@@ -50,9 +58,9 @@ Scale settings used in this project:
 Examples:
 
 ```bash
-python main_jilin.py --option_path option_jilin.yml
-python main_landsat.py --option_path option_landsat.yml
-python main_skysat.py --option_path option_skysat.yml
+python runners/main_jilin.py --option_path options/option_jilin.yml
+python runners/main_landsat.py --option_path options/option_landsat.yml
+python runners/main_skysat.py --option_path options/option_skysat.yml
 ```
 
 The training loop saves:
@@ -71,28 +79,20 @@ under:
 ## Inference (Reduced Resolution)
 
 ```bash
-python test_jilin.py
-python test_landsat.py
-python test_skysat.py
-```
-
-Outputs are written to:
-
-```text
-<test.save_dir>/<test.type>/
+python runners/test_jilin.py
+python runners/test_landsat.py
+python runners/test_skysat.py
 ```
 
 ## Inference (Full Resolution / Large Images)
 
 ```bash
-python test_full_jilin.py
-python test_full_landsat.py
-python test_full_skysat.py
+python runners/test_full_jilin.py
+python runners/test_full_landsat.py
+python runners/test_full_skysat.py
 ```
 
 ## Citation
-
-If you find this project or dataset useful, please cite:
 
 ```bibtex
 @inproceedings{scaleformer2026,
@@ -101,4 +101,4 @@ If you find this project or dataset useful, please cite:
   booktitle = {},
   year      = {}
 }
-
+```
