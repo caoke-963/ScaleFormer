@@ -1,0 +1,70 @@
+#
+# @Author: wjm
+# @Date: 2019-10-13 21:45:10
+# @LastEditTime: 2019-10-13 21:46:06
+# @Description: file content
+# 
+
+name: Net
+algorithm: panmamba_baseline_finalversion #
+nEpochs: 500
+gpu_mode: True
+save_best: True
+gpus: [0]
+threads:  0 #num_works
+log_dir: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/log/
+
+
+seed: 123 #123
+checkpoint: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/checkpoint
+data_dir_train: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/jilin/train200
+data_dir_eval: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/jilin/test800
+# data_dir_train: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/landsat/train256
+# data_dir_eval: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/landsat/test1600
+# data_dir_train: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/skysat/train200
+# data_dir_eval: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/skysat/test1600
+
+source_ms: ms
+source_pan: pan
+
+pretrain:
+  pretrained: False
+  pre_sr: ~
+  pre_folder: ~
+
+test:  #用于指标测试的代码
+  algorithm: scaleformer_v1 #pannetffft
+  # patch_size: 500
+  type: test #[test, eval]
+  data_dir: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/datasets/hddataset/fjilin/test2000  # fjilin fskysat flandsat
+  source_ms: ms
+  source_pan: pan #moe_bal_4_1681220224
+  model: scaleformer_v1/bestPSNR.pth
+  #model: ugcn_s4nb_4_1630368984/best.pth
+  save_dir: /home/jovyan/maao-data-cephfs-2/workspace/caoke/panhd/result/scaleformer_fjilin/
+
+data:
+  upsacle:  4  # TODO jilin 4 skysat 2.5 landsat 2
+  batch_size: 8 #4
+  patch_size: 50
+  data_augmentation: False
+  n_colors: 4
+  rgb_range: 255
+  normalize : False
+  
+schedule:
+  lr: 5e-4 #5e-6 #1e-2
+  decay: 500
+  gamma: 0.1
+  optimizer: ADAM #[ADAM, SGD, RMSprop]
+  momentum: 0.9 #SGD momentum
+  beta1: 0.9 #ADAM beta1
+  beta2: 0.999 #ADAM beta
+  epsilon: 1e-8 #ADAM epsilon
+  alpha: 0.9 #RMSprop alpha
+  weight_dency: 0
+  gclip: 4 #0.4   #0.4  0.04
+  loss: L1
+  use_YCbCr: False
+
+
