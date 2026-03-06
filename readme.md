@@ -1,5 +1,9 @@
 # ScaleFormer
 
+[![arXiv](https://img.shields.io/badge/arXiv-2603.00543-B31B1B?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2603.00543)
+[![GitHub](https://img.shields.io/badge/GitHub-ScaleFormer-181717?logo=github&logoColor=white)](https://github.com/caoke-963/ScaleFormer)
+[![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/datasets/kecao/PanScale)
+
 This folder contains the implementation of the paper Cross-Scale Pansharpening via ScaleFormer and the PanScale Datasets (CVPR 2026).
 
 
@@ -95,10 +99,10 @@ python runners/test_full_skysat.py
 ## Citation
 
 ```bibtex
-@inproceedings{scaleformer2026,
-  title     = {},
-  author    = {},
-  booktitle = {},
-  year      = {}
+@article{cao2026cross,
+  title={Cross-Scale Pansharpening via ScaleFormer and the PanScale Benchmark},
+  author={Cao, Ke and He, Xuanhua and Li, Xueheng and Zhu, Lingting and Wang, Yingying and Ma, Ao and Zhang, Zhanjie and Zhou, Man and Xie, Chengjun and Zhang, Jie},
+  journal={arXiv preprint arXiv:2603.00543},
+  year={2026}
 }
 ```
